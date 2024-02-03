@@ -40,12 +40,24 @@ my_font = pygame.font.Font('font/impact2.ttf', 20)
 running = True
 while running == True:
     text_heart = my_font.render(f'heart: {heart}', False, 'Black')
-    screen.blit(enemy,(xa,ya))
+
+
+
+    def base():
+        screen.fill((112, 211, 110))
+        screen.blit(text_heart, (50, 20))
+        screen.blit(enemy,(xa,ya))
+
+
     if x>xa-30 and x<xa+30 and y>ya-30 and y<ya+30:
         heart -=1
+
+
+
     if b == 0:
         base()
-        screen.blit(player,(x,y))
+        screen.blit(player, (x, y))
+
 
 
         if a == 0:
@@ -58,44 +70,37 @@ while running == True:
             player = pygame.image.load('imagee/player/walk/up/up1.png')
         if pygame.mouse.get_pressed()[0]:
             if a == 0:
-                screen.fill((112,211,110))
-                screen.blit(enemy, (xa, ya))
+                base()
                 screen.blit(attac_down[player_attac], (x, y))
             if a == 1:
-                screen.fill((112, 211, 110))
-                screen.blit(enemy, (xa, ya))
+                base()
                 screen.blit(attac_left[player_attac],(x,y))
             if a == 2:
-                screen.fill((112, 211, 110))
-                screen.blit(enemy, (xa, ya))
+                base()
                 screen.blit(attac_right[player_attac], (x, y))
             if a == 3:
-                screen.fill((112, 211, 110))
-                screen.blit(enemy, (xa, ya))
+                base()
                 screen.blit(attac_up[player_attac], (x, y))
         keys = pygame.key.get_pressed()
         if keys[pygame.K_w]:
             y-=move_speed
-            screen.fill((112,211,110))
-            screen.blit(enemy, (xa, ya))
+            base()
             screen.blit(walk_up[player_walk],(x,y))
+
             a = 3
         if keys[pygame.K_s]:
             y+=move_speed
-            screen.fill((112,211,110))
-            screen.blit(enemy, (xa, ya))
+            base()
             screen.blit(walk_down[player_walk], (x, y))
             a = 0
         if keys[pygame.K_a]:
             x-=move_speed
-            screen.fill((112,211,110))
-            screen.blit(enemy, (xa, ya))
+            base()
             screen.blit(walk_left[player_walk], (x, y))
             a = 1
         if keys[pygame.K_d]:
             x+=move_speed
-            screen.fill((112,211,110))
-            screen.blit(enemy, (xa, ya))
+            base()
             screen.blit(walk_right[player_walk], (x, y))
             a = 2
         if player_walk == 2:

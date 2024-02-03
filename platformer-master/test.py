@@ -1,4 +1,5 @@
 import pygame
+
 attack_left = [
     pygame.image.load('imagee/player/attack/left/left11.png'),
     pygame.image.load('imagee/player/attack/left/left22.png'),
@@ -43,14 +44,4 @@ pygame.image.load('imagee/player/walk/down/down1.png'),
 pygame.image.load('imagee/player/walk/down/down2.png'),
 pygame.image.load('imagee/player/walk/down/down3.png')
 ]
-screen = pygame.display.set_mode((800,640))
-def base():
-    enemy = pygame.image.load('imagee/enemy/Soldier1.png')
-    heart = 3
-    my_font = pygame.font.Font('font/impact2.ttf', 20)
-    text_heart = my_font.render(f'heart: {heart}', False, 'Black')
-    xa = 100
-    ya = 100
-    screen.fill((112, 211, 110))
-    screen.blit(enemy, (xa, ya))
-    screen.blit(text_heart, (50, 20))
+from code import xa,ya,screen,enemy
