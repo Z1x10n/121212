@@ -15,7 +15,7 @@ heart = 3
 clock = pygame.time.Clock()
 
 pygame.init()
-screen = pygame.display.set_mode((800,640))
+screen = pygame.display.set_mode((800,600),pygame.FULLSCREEN)
 enemy = pygame.image.load('imagee/enemy/Soldier1.png')
 player = pygame.image.load('imagee/player/walk/down/down1.png')
 
