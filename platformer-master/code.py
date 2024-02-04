@@ -7,6 +7,13 @@ y = 0
 x = 0
 xa = 100
 ya = 100
+player_live_y = y - 20
+player_live_x = x -  5
+width = 30
+height = 5
+
+
+
 
 move_speed = 10
 damag =5
@@ -51,6 +58,7 @@ while running == True:
     if b == 0:
         base()
         screen.blit(player, (x, y))
+        pygame.draw.rect(screen, (255,255,255), (x-1, y-7, width, height))
 
 
 
@@ -86,6 +94,7 @@ while running == True:
             base()
             screen.blit(walk_up[player_walk],(x,y))
             a = 3
+            width-=1
         if keys[pygame.K_s]:
             y+=move_speed
             base()

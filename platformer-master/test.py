@@ -44,4 +44,4 @@ pygame.image.load('imagee/player/walk/down/down1.png'),
 pygame.image.load('imagee/player/walk/down/down2.png'),
 pygame.image.load('imagee/player/walk/down/down3.png')
 ]
-from code import xa,ya,screen,enemy
+
