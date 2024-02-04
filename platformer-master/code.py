@@ -1,20 +1,21 @@
 # hello commit
 import pygame
 from test import *
+import random
 b = 0
 a = 0
 y = 0
-x = 0
+x = 400
 xa = 100
 ya = 100
 width_player = 30
 height_player = 5
 width_enemy = 30
 height_enemy = 5
+aa = 0
 
 
-
-
+speed = 5
 move_speed = 10
 damag =5
 heart = 3
@@ -23,7 +24,7 @@ clock = pygame.time.Clock()
 
 pygame.init()
 screen = pygame.display.set_mode((800,600),pygame.FULLSCREEN)
-enemy = pygame.image.load('imagee/enemy/Soldier1.png')
+enemy = pygame.image.load('imagee/player/walk/down/down1.png')
 player = pygame.image.load('imagee/player/walk/down/down1.png')
 
 #анимация боя
@@ -52,6 +53,13 @@ while running == True:
         pygame.draw.rect(screen, (0, 128, 0), (x - 1, y - 7, width_player, height_player))
         pygame.draw.rect(screen, (255,0,0), (xa - 1, ya - 7, width_enemy, height_enemy))
         screen.blit(enemy,(xa,ya))
+    def baase():
+        screen.fill((112, 211, 110))
+        pygame.draw.rect(screen, (0, 128, 0), (x - 1, y - 7, width_player, height_player))
+        pygame.draw.rect(screen, (255, 0, 0), (xa - 1, ya - 7, width_enemy, height_enemy))
+        screen.blit(player, (x, y))
+
+
 
 
 
@@ -74,6 +82,25 @@ while running == True:
 
 
 
+
+
+
+
+
+
+
+
+        if aa == 0:
+            enemy = pygame.image.load('imagee/player/walk/down/down1.png')
+        if aa == 1:
+            enemy = pygame.image.load('imagee/player/walk/left/left1.png')
+        if aa == 2:
+            enemy = pygame.image.load('imagee/player/walk/right/right1.png')
+        if aa == 3:
+            enemy = pygame.image.load('imagee/player/walk/up/up1.png')
+
+
+
         if pygame.mouse.get_pressed()[0]:
             if a == 0:
                 base()
@@ -81,14 +108,17 @@ while running == True:
             if a == 1:
                 base()
                 screen.blit(attac_left[player_attac],(x,y))
+                if xa + x > 50:
+                    width_enemy -= 1
             if a == 2:
                 base()
                 screen.blit(attac_right[player_attac], (x, y))
-                if xa - x < 50:
+                if xa - x < 50 and xa - x > 0:
                     width_enemy -= 1
             if a == 3:
                 base()
                 screen.blit(attac_up[player_attac], (x, y))
+
 
 
         keys = pygame.key.get_pressed()
@@ -113,6 +143,32 @@ while running == True:
             screen.blit(walk_right[player_walk], (x, y))
             a = 2
 
+
+        if x-50 > xa and (x-50 > xa or keys[pygame.K_d]) :
+            xa+=speed
+            baase()
+            screen.blit(walk_right[player_walk], (xa, ya))
+            aa = 2
+        if x+50 < xa and (x+50 < xa or keys[pygame.K_a])  :
+            xa-=speed
+            baase()
+            screen.blit(walk_left[player_walk], (xa, ya))
+            aa = 1
+        if y > ya and (y > ya or keys[pygame.K_w]) :
+            ya+=speed
+            baase()
+            screen.blit(walk_down[player_walk], (xa, ya))
+            aa = 0
+        if y < ya and (y < ya or keys[pygame.K_s]) :
+            ya-=speed
+            baase()
+            screen.blit(walk_up[player_walk], (xa, ya))
+            aa = 3
+
+
+
+
+
         if player_walk == 2:
             player_walk = 0
         else:
@@ -123,6 +179,9 @@ while running == True:
             player_attac+=1
         if keys[pygame.K_ESCAPE]:
             b = 1
+
+
+
 
     if b == 1:
         screen.fill(('Grey'))

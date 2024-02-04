@@ -1,23 +1,22 @@
 import pygame
-
+from test import *
 pygame.init()
 win = pygame.display.set_mode((500, 300))   # Задаём размеры окну нашей игры"
 
 pygame.display.set_caption("Game")  # Даём назнавие нашему окну"
 
-player_stand = pygame.image.load('player_stand.png')
-player_right = [pygame.image.load(f'player_right_{i}.png') for i in range(1, 5)]
-player_left = [pygame.image.load(f'player_left_{i}.png') for i in range(1, 5)]
-player_up = [pygame.image.load(f'player_up_{i}.png') for i in range(1, 5)]
-player_down = [pygame.image.load(f'player_down_{i}.png') for i in range(1, 5)]
+player_stand = pygame.image.load('imagee/player/walk/down/down1.png')
+player_right = walkright
+player_left = walkleft
+player_up = walkup
+player_down = walkdown
 
-player_stand_enemy = pygame.image.load('enemy_stand.png')
-player_right_enemy = [pygame.image.load(f'enemy_right_{i}.png') for i in range(1, 5)]
-player_left_enemy = [pygame.image.load(f'enemy_left_{i}.png') for i in range(1, 5)]
-player_up_enemy = [pygame.image.load(f'enemy_up_{i}.png') for i in range(1, 5)]
-player_down_enemy = [pygame.image.load(f'enemy_down_{i}.png') for i in range(1, 5)]
-
-blood = pygame.image.load('blood.png')
+player_stand_enemy = pygame.image.load('imagee/player/walk/down/down1.png')
+player_right_enemy = walkright
+player_left_enemy = walkleft
+player_up_enemy = walkup
+player_down_enemy = walkdown
+blood = pygame.image.load('bg2.png')
 bg = pygame.image.load('bg2.png')
 
 
