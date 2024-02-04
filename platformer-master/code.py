@@ -7,10 +7,10 @@ y = 0
 x = 0
 xa = 100
 ya = 100
-player_live_y = y - 20
-player_live_x = x -  5
-width = 30
-height = 5
+width_player = 30
+height_player = 5
+width_enemy = 30
+height_enemy = 5
 
 
 
@@ -49,7 +49,8 @@ while running == True:
 
     def base():
         screen.fill((112, 211, 110))
-        screen.blit(text_heart, (50, 20))
+        pygame.draw.rect(screen, (0, 128, 0), (x - 1, y - 7, width_player, height_player))
+        pygame.draw.rect(screen, (255,0,0), (xa - 1, ya - 7, width_enemy, height_enemy))
         screen.blit(enemy,(xa,ya))
 
 
@@ -58,7 +59,7 @@ while running == True:
     if b == 0:
         base()
         screen.blit(player, (x, y))
-        pygame.draw.rect(screen, (255,255,255), (x-1, y-7, width, height))
+
 
 
 
@@ -83,6 +84,8 @@ while running == True:
             if a == 2:
                 base()
                 screen.blit(attac_right[player_attac], (x, y))
+                if xa - x < 50:
+                    width_enemy -= 1
             if a == 3:
                 base()
                 screen.blit(attac_up[player_attac], (x, y))
@@ -94,7 +97,6 @@ while running == True:
             base()
             screen.blit(walk_up[player_walk],(x,y))
             a = 3
-            width-=1
         if keys[pygame.K_s]:
             y+=move_speed
             base()
